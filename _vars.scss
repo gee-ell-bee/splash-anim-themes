@@ -1,0 +1,33 @@
+// fonts
+$sans-serif-disp: 'halyard-display', Arial, sans-serif;
+$sans-serif-text: 'halyard-text', Arial, sans-serif;
+$serif: '';
+
+// colors
+$main-bg-col: #000;
+$text-col: #fff;
+
+// font sizes
+$header-h1-sz: 12rem;
+$h1-sz: 2.5rem;
+$h1-marg: 0.7rem;
+$h1-pad: 0.5rem;
+$h1-h-tot: calc($header-h1-sz + $h1-marg * 2);
+
+// box calculations
+$whole-marg: 3rem;
+
+// main
+$main-width: 70vw;
+$body-marg-base-funct: calc((100vw - $main-width)/3); // aka body-marg-right
+$body-marg-left: calc($body-marg-base-funct * 2);
+$main-height: 400px;
+
+// content
+$cont-marg: 5vw;
+$cont-pad-r: 1vw;
+$cont-marg-r: calc($cont-marg - $cont-pad-r);
+
+// header
+$header-ind: 6rem;
+$header-val: -$header-ind;
