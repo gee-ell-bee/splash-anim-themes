@@ -1,0 +1,128 @@
+// fonts
+$sans-serif-disp: 'halyard-display', Arial, sans-serif;
+$sans-serif-text: 'halyard-text', Arial, sans-serif;
+$serif: '';
+
+// colors
+$main-bg-col: #000;
+$text-col: #fff;
+
+// font sizes
+$header-h1-sz: 12rem;
+$h1-sz: 2.5rem;
+$h1-marg: 0.7rem;
+$h1-pad: 0.5rem;
+$h1-h-tot: calc($header-h1-sz + $h1-marg * 2);
+
+@mixin h1($color: $text-col, $size: $h1-sz) {
+    padding: $h1-pad 0;
+    font-size: $size;
+    color: $color;
+    font-weight: 600;
+}
+
+@mixin header-h1($col: $text-col, $sz: $header-h1-sz) {
+    line-height: 1;
+    font-family: $sans-serif-disp;
+    font-style: italic;
+    @include h1($color: $col, $size: $sz);
+}
+
+// box calculations
+$whole-marg: 3rem;
+
+// main
+$main-width: 70vw;
+$body-marg-base-funct: calc((100vw - $main-width)/3); // aka body-marg-right
+$body-marg-left: calc($body-marg-base-funct * 2);
+$main-height: 400px;
+
+// content
+$cont-marg: 5vw;
+$cont-pad-r: 1vw;
+$cont-marg-r: calc($cont-marg - $cont-pad-r);
+
+// header
+$header-ind: 6rem;
+$header-val: -$header-ind;
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+#root, #__next {
+    isolation: isolate;
+}
+  
+body {
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    font-size: 20px;
+    font-family: $sans-serif-text;
+    font-weight: 300;
+    color: $text-col;
+}
+
+#whole {
+    margin: $whole-marg $body-marg-base-funct $whole-marg $body-marg-left;
+    width: $main-width;
+}
+
+main {
+    position: relative;
+    z-index: 5;
+    margin: 0;
+    background-color: $main-bg-col;
+    height: $main-height;
+    overflow: hidden;
+    
+    .content {
+        margin: $cont-marg $cont-marg-r $cont-marg $cont-marg;
+        padding: 0.5rem $cont-pad-r 0.5rem 0.5rem;
+        overflow-y: scroll;
+        height: calc($main-height - $h1-h-tot - $cont-marg * 2);
+        background-color: $text-col;
+        color: $main-bg-col;
+
+        p {
+            margin: 0 0 1rem 0;
+        }
+    }
+}
+
+header {
+    position: relative;
+    height: $h1-h-tot;
+    h1 {
+        margin: $h1-marg 0 $h1-marg $header-val;
+        @include header-h1;
+    }
+
+    
+}
+
+.header-bg {
+    position: absolute;
+    display: block;
+    top: calc($whole-marg + $h1-marg + $h1-pad);
+    z-index: 0;
+    margin: 0 0 0 $header-val;
+    width: calc($main-width + $header-ind);
+}
+
+.header-bg::after {
+    content: "Grey";
+    @include header-h1($col: $main-bg-col);
+}

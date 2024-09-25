@@ -1,0 +1,90 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  font-size: 20px;
+  font-family: "halyard-text", Arial, sans-serif;
+  font-weight: 300;
+  color: #fff;
+}
+
+#whole {
+  margin: 3rem 10vw 3rem 20vw;
+  width: 70vw;
+}
+
+main {
+  position: relative;
+  z-index: 5;
+  margin: 0;
+  background-color: #000;
+  height: 400px;
+  overflow: hidden;
+}
+main .content {
+  margin: 5vw 4vw 5vw 5vw;
+  padding: 0.5rem 1vw 0.5rem 0.5rem;
+  overflow-y: scroll;
+  height: calc(400px - 13.4rem - 10vw);
+  background-color: #fff;
+  color: #000;
+}
+main .content p {
+  margin: 0 0 1rem 0;
+}
+
+header {
+  position: relative;
+  height: 13.4rem;
+}
+header h1 {
+  margin: 0.7rem 0 0.7rem -6rem;
+  line-height: 1;
+  font-family: "halyard-display", Arial, sans-serif;
+  font-style: italic;
+  padding: 0.5rem 0;
+  font-size: 12rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.header-bg {
+  position: absolute;
+  display: block;
+  top: 4.2rem;
+  z-index: 0;
+  margin: 0 0 0 -6rem;
+  width: calc(70vw + 6rem);
+}
+
+.header-bg::after {
+  content: "Grey";
+  line-height: 1;
+  font-family: "halyard-display", Arial, sans-serif;
+  font-style: italic;
+  padding: 0.5rem 0;
+  font-size: 12rem;
+  color: #000;
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=style.css.map */
