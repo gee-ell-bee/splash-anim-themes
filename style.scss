@@ -8,7 +8,7 @@ $main-bg-col: #000;
 $text-col: #fff;
 
 // font sizes
-$header-h1-sz: 12rem;
+$header-h1-sz: 30rem;
 $h1-sz: 2.5rem;
 $h1-marg: 0.7rem;
 $h1-pad: 0.5rem;
@@ -32,10 +32,10 @@ $h1-h-tot: calc($header-h1-sz + $h1-marg * 2);
 $whole-marg: 3rem;
 
 // main
-$main-width: 70vw;
+$main-width: 50vw;
 $body-marg-base-funct: calc((100vw - $main-width)/3); // aka body-marg-right
 $body-marg-left: calc($body-marg-base-funct * 2);
-$main-height: 400px;
+$main-height: 50vh;
 
 // content
 $cont-marg: 5vw;
@@ -43,7 +43,7 @@ $cont-pad-r: 1vw;
 $cont-marg-r: calc($cont-marg - $cont-pad-r);
 
 // header
-$header-ind: 6rem;
+$header-ind: 15rem;
 $header-val: -$header-ind;
 
 *, *::before, *::after {
@@ -87,9 +87,11 @@ main {
     margin: 0;
     background-color: $main-bg-col;
     height: $main-height;
+    border-radius: 7px;
     overflow: hidden;
     
     .content {
+        display: none;
         margin: $cont-marg $cont-marg-r $cont-marg $cont-marg;
         padding: 0.5rem $cont-pad-r 0.5rem 0.5rem;
         overflow-y: scroll;
