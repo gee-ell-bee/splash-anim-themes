@@ -25,6 +25,7 @@ $h1-h-tot: calc($header-h1-sz + $h1-marg * 2);
     line-height: 1;
     font-family: $sans-serif-disp;
     font-style: italic;
+    text-shadow: 0 0 3px $col;
     @include h1($color: $col, $size: $sz);
 }
 
@@ -88,6 +89,7 @@ main {
     background-color: $main-bg-col;
     height: $main-height;
     border-radius: 7px;
+    box-shadow: 0 0px 1px $main-bg-col;
     overflow: hidden;
     
     .content {
