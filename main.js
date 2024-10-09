@@ -2,7 +2,7 @@
 const openBtn = document.getElementById("openBtn");
 const replayBtn = document.getElementById("replayBtn");
 
-console.log(openBtn, replayBtn);
+// console.log(openBtn, replayBtn);
 
 // functions
 
