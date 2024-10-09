@@ -39,37 +39,51 @@ main {
   margin: 0;
   background-color: #000;
   height: 50vh;
+  max-height: 70vh;
   border-radius: 7px;
   box-shadow: 0 0px 1px #000;
   overflow: hidden;
+  transition: height 0.25s ease-in;
 }
 main .content {
   display: none;
   margin: 5vw 4vw 5vw 5vw;
   padding: 0.5rem 1vw 0.5rem 0.5rem;
   overflow-y: scroll;
-  height: calc(50vh - 31.4rem - 10vw);
-  background-color: #fff;
-  color: #000;
+  color: #fff;
+}
+main .content p:first-of-type {
+  margin: 1rem 0 1rem 0;
 }
 main .content p {
   margin: 0 0 1rem 0;
 }
+main .content.visible {
+  display: block;
+}
+
+main.lengthen {
+  height: 70vh;
+}
 
 header {
   position: relative;
+  width: max-content;
   height: 31.4rem;
+  transform: scale(1);
 }
 header h1 {
   margin: 0.7rem 0 0.7rem -15rem;
   line-height: 1;
   font-family: "halyard-display", Arial, sans-serif;
   font-style: italic;
-  text-shadow: 0 0 3px #fff;
+  text-shadow: 0 0 10px #fff;
   padding: 0.5rem 0;
   font-size: 30rem;
   color: #fff;
   font-weight: 600;
+  transform: scale(1) translateX(0);
+  animation: elemShrink 0.5s ease-in 2.1s alternate 1 forwards;
 }
 
 .header-bg {
@@ -79,6 +93,8 @@ header h1 {
   z-index: 0;
   margin: 0 0 0 -15rem;
   width: calc(50vw + 15rem);
+  transform: scale(1) translateX(0);
+  animation: shadowShrink 0.5s ease-in 2s alternate 1 forwards;
 }
 
 .header-bg::after {
@@ -91,6 +107,106 @@ header h1 {
   font-size: 30rem;
   color: #000;
   font-weight: 600;
+}
+
+form {
+  margin: 0 4rem;
+  display: flex;
+  justify-content: space-around;
+}
+form button {
+  width: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1.5rem 0.75rem 1.5rem;
+  border-radius: 7px;
+  border: 0;
+  box-shadow: 0 0 7px inset;
+  font-family: "halyard-text", Arial, sans-serif;
+  text-transform: lowercase;
+  font-size: 1.5rem;
+  color: #000;
+  text-shadow: 0 0 2px #8f8f8f;
+  background-color: #fff;
+  visibility: hidden;
+  transition: all ease-in-out 0.125s;
+}
+form button:hover {
+  box-shadow: 0 0 9px inset;
+}
+form button:active {
+  box-shadow: 0 0 15px inset;
+  text-shadow: 0 0 1px #8f8f8f;
+}
+form button:hover, form button:active {
+  cursor: pointer;
+}
+
+button#replayBtn.visible {
+  animation: btnAppear 3.1s ease-in-out 0.5s 1 forwards;
+}
+
+button#openBtn.visible {
+  animation: btnAppear 3.2s ease-in-out 0.5s 1 forwards;
+}
+
+@keyframes elemShrink {
+  0% {
+    transform: scale(1) translateX(0);
+  }
+  100% {
+    transform: scale(0.49) translateX(-9.5rem);
+  }
+}
+@keyframes shadowShrink {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.51);
+  }
+}
+@keyframes btnAppear {
+  0% {
+    visibility: visible;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+@keyframes elemShake {
+  0% {
+    transform: scale(0.49) translateX(-9.5rem);
+  }
+  10% {
+    transform: scale(0.49) translateX(-9.85rem) translateY(-0.5rem);
+  }
+  25% {
+    transform: scale(0.49) translateX(-9.5rem) translateY(-0.1rem);
+  }
+  45% {
+    transform: scale(0.49) translateX(-9.1rem) translateY(-0.7rem);
+  }
+  65% {
+    transform: scale(0.49) translateX(-9.3rem) translateY(-0.3rem);
+  }
+  80% {
+    transform: scale(0.49) translateX(-8.75rem) translateY(-0.2rem);
+  }
+  95% {
+    transform: scale(0.49) translateX(-9.4rem) translateY(0rem);
+  }
+}
+@keyframes elemAttack {
+  0% {
+    transform: scale(0.49) translateX(-9.5rem);
+  }
+  15% {
+    transform: scale(0.51) translateX(-8.5rem) translateY(0.5rem);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

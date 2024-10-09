@@ -1,3 +1,29 @@
+@use "sass:math";
+
+// animation
+$hdr-anim-delay: .5s;
+$hdr-elem-dur: 2.1s;
+$hdr-shad-dur: 2s;
+
+$hdr-anim-elem-snk: elemShrink;
+$hdr-anim-elem-snk-time: $hdr-anim-delay ease-in $hdr-elem-dur alternate 1 forwards;
+$hdr-anim-shad-snk: shadowShrink;
+$hdr-anim-shad-snk-time: $hdr-anim-delay ease-in $hdr-shad-dur alternate 1 forwards;
+
+$hdr-anim-elem-shk: elemShake 1s ease-out 2.8s alternate 1 forwards;
+$hdr-anim-transf: scale(1) translateX(0);
+
+$btn-anim-name: btnAppear;
+$btn-anim-delay-1: .5s;
+$btn-anim-delay-2: .1s;
+$btn-anim-fctn: ease-in-out;
+$btn-anim-dur: .5s;
+// $btn-anim-delay-1-tot: calc($hdr-anim-delay-1 + $hdr-elem-dur + $btn-anim-delay);
+// $btn-anim-delay-2-tot: calc($btn-anim-delay-1-tot + $btn-anim-delay-2);
+
+// $btn-anim-1-time: $btn-anim-delay-1-tot $btn-anim-fctn $btn-anim-dur 1 forwards;
+// $btn-anim-2-time: $btn-anim-delay-2-tot $btn-anim-fctn $btn-anim-dur 1 forwards;
+
 // fonts
 $sans-serif-disp: 'halyard-display', Arial, sans-serif;
 $sans-serif-text: 'halyard-text', Arial, sans-serif;
@@ -25,7 +51,11 @@ $h1-h-tot: calc($header-h1-sz + $h1-marg * 2);
     line-height: 1;
     font-family: $sans-serif-disp;
     font-style: italic;
-    text-shadow: 0 0 3px $col;
+    @if $col == $main-bg-col {
+        text-shadow: 0 0 3px $col;
+    } @else {
+        text-shadow: 0 0 10px $col;
+    }
     @include h1($color: $col, $size: $sz);
 }
 
@@ -37,6 +67,7 @@ $main-width: 50vw;
 $body-marg-base-funct: calc((100vw - $main-width)/3); // aka body-marg-right
 $body-marg-left: calc($body-marg-base-funct * 2);
 $main-height: 50vh;
+$main-max-h: 70vh;
 
 // content
 $cont-marg: 5vw;
@@ -88,34 +119,50 @@ main {
     margin: 0;
     background-color: $main-bg-col;
     height: $main-height;
+    max-height: $main-max-h;
     border-radius: 7px;
     box-shadow: 0 0px 1px $main-bg-col;
     overflow: hidden;
+    transition: height .25s ease-in;
     
     .content {
         display: none;
         margin: $cont-marg $cont-marg-r $cont-marg $cont-marg;
         padding: 0.5rem $cont-pad-r 0.5rem 0.5rem;
         overflow-y: scroll;
-        height: calc($main-height - $h1-h-tot - $cont-marg * 2);
-        background-color: $text-col;
-        color: $main-bg-col;
+        // height: calc($main-height - $h1-h-tot - $cont-marg * 2);
+        // background-color: $text-col;
+        color: $text-col;
+
+        p:first-of-type {
+            margin: 1rem 0 1rem 0;
+        }
 
         p {
             margin: 0 0 1rem 0;
         }
     }
+
+    .content.visible {
+        display: block;
+    }
+}
+
+main.lengthen {
+    height: 70vh;
 }
 
 header {
     position: relative;
+    width: max-content;
     height: $h1-h-tot;
+    transform: scale(1);
     h1 {
         margin: $h1-marg 0 $h1-marg $header-val;
         @include header-h1;
+        transform: $hdr-anim-transf;
+        animation: $hdr-anim-elem-snk $hdr-anim-elem-snk-time;
     }
-
-    
 }
 
 .header-bg {
@@ -125,9 +172,144 @@ header {
     z-index: 0;
     margin: 0 0 0 $header-val;
     width: calc($main-width + $header-ind);
+    transform: $hdr-anim-transf;
+    animation: $hdr-anim-shad-snk $hdr-anim-shad-snk-time;
+
 }
 
 .header-bg::after {
     content: "Grey";
     @include header-h1($col: $main-bg-col);
 }
+
+form {
+    margin: 0 4rem;
+    display: flex;
+    justify-content: space-around;
+
+    button {
+        width: max-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem 1.5rem .75rem 1.5rem;
+        border-radius: 7px;
+        border: 0;
+        box-shadow: 0 0 7px inset;
+    
+        font-family: $sans-serif-text;
+        text-transform: lowercase;
+        font-size: 1.5rem;
+        color: $main-bg-col;
+        text-shadow: 0 0 2px #8f8f8f;
+        background-color: $text-col;
+    
+        
+        visibility: hidden;
+        transition: all ease-in-out .125s;
+    
+        &:hover {
+            box-shadow: 0 0 9px inset;
+        }
+    
+        &:active {
+            box-shadow: 0 0 15px inset;
+            text-shadow: 0 0 1px #8f8f8f;
+        }
+    
+        &:hover, &:active {
+            cursor: pointer;
+        }
+    }
+}
+
+button#replayBtn.visible {
+    animation: $btn-anim-name calc($hdr-anim-delay + $hdr-elem-dur + $btn-anim-delay-1) $btn-anim-fctn $btn-anim-dur 1 forwards;
+}
+
+button#openBtn.visible {
+    animation: $btn-anim-name calc($hdr-anim-delay + $hdr-elem-dur + $btn-anim-delay-1 + $btn-anim-delay-2) $btn-anim-fctn $btn-anim-dur 1 forwards;
+}
+
+
+@keyframes elemShrink {
+    0% {
+        transform: scale(1) translateX(0);
+    }
+
+    100% {
+        transform: scale(0.49) translateX(-9.5rem);
+    }
+}
+
+@keyframes shadowShrink {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0.51);
+    }
+}
+
+@keyframes btnAppear {
+    0% {
+        visibility: visible;
+        opacity: 0;
+    }
+
+    100% {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@keyframes elemShake {
+    0% {
+        transform: scale(.49) translateX(-9.5rem);
+    }
+
+    //hit
+    10% {
+        transform: scale(.49) translateX(-9.85rem) translateY(-.5rem);
+    }
+
+    //return
+    25% {
+        transform: scale(.49) translateX(-9.5rem) translateY(-.1rem);
+    }
+
+    //hit
+    45% {
+        transform: scale(.49) translateX(-9.1rem) translateY(-.7rem);
+    }
+
+    //return
+    65% {
+        transform: scale(.49) translateX(-9.3rem) translateY(-.3rem);
+    }
+
+    //hit
+    80% {
+        transform: scale(.49) translateX(-8.75rem) translateY(-.2rem);
+    }
+
+    //return
+    95% {
+        transform: scale(.49) translateX(-9.4rem) translateY(0rem);
+    }
+
+
+}
+
+@keyframes elemAttack {
+    0% {
+        transform: scale(.49) translateX(-9.5rem);
+    }
+
+    15% {
+        transform: scale(.51) translateX(-8.5rem) translateY(.5rem);
+    }
+    
+}
+
