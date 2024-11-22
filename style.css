@@ -26,6 +26,7 @@ body {
   font-family: "halyard-text", Arial, sans-serif;
   font-weight: 300;
   color: #fff;
+  height: min-content;
 }
 
 #whole {
@@ -38,52 +39,50 @@ main {
   z-index: 5;
   margin: 0;
   background-color: #000;
-  height: 50vh;
-  max-height: 70vh;
+  height: max-content;
+  max-height: max-content;
   border-radius: 7px;
-  box-shadow: 0 0px 1px #000;
+  box-shadow: 0 0px 30px #000;
   overflow: hidden;
-  transition: height 0.25s ease-in;
+  transition: all 0.25s ease-in;
 }
-main .content {
-  display: none;
+main .buttons {
+  margin: 5vw 4vw 5vw 5vw;
+  height: calc((1.25rem + 35px) * 2 + 1.5rem);
+}
+main #content {
+  border-radius: 6px;
   margin: 5vw 4vw 5vw 5vw;
   padding: 0.5rem 1vw 0.5rem 0.5rem;
   overflow-y: scroll;
+  max-height: max-content;
+  display: block;
+  height: 0;
   color: #fff;
 }
-main .content p:first-of-type {
-  margin: 1rem 0 1rem 0;
-}
-main .content p {
+main #content p {
   margin: 0 0 1rem 0;
-}
-main .content.visible {
-  display: block;
-}
-
-main.lengthen {
-  height: 70vh;
 }
 
 header {
   position: relative;
+  z-index: 2;
   width: max-content;
-  height: 31.4rem;
-  transform: scale(1);
+  height: max-content;
+  transform: scale(1) translateX(0);
 }
 header h1 {
   margin: 0.7rem 0 0.7rem -15rem;
   line-height: 1;
   font-family: "halyard-display", Arial, sans-serif;
   font-style: italic;
-  text-shadow: 0 0 10px #fff;
+  text-shadow: 0 0 12px #fff;
   padding: 0.5rem 0;
-  font-size: 30rem;
+  font-size: 80vw;
   color: #fff;
   font-weight: 600;
+  height: 100%;
   transform: scale(1) translateX(0);
-  animation: elemShrink 0.5s ease-in 2.1s alternate 1 forwards;
 }
 
 .header-bg {
@@ -94,7 +93,7 @@ header h1 {
   margin: 0 0 0 -15rem;
   width: calc(50vw + 15rem);
   transform: scale(1) translateX(0);
-  animation: shadowShrink 0.5s ease-in 2s alternate 1 forwards;
+  animation: 1.8s ease-in 2s 1 forwards shadowShrink;
 }
 
 .header-bg::after {
@@ -102,22 +101,24 @@ header h1 {
   line-height: 1;
   font-family: "halyard-display", Arial, sans-serif;
   font-style: italic;
-  text-shadow: 0 0 3px #000;
+  text-shadow: 0 0 15px #000;
   padding: 0.5rem 0;
-  font-size: 30rem;
+  font-size: 80vw;
   color: #000;
   font-weight: 600;
 }
 
 form {
-  margin: 0 4rem;
   display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
   justify-content: space-around;
 }
 form button {
   width: max-content;
   display: flex;
   justify-content: center;
+  position: relative;
   align-items: center;
   padding: 0.5rem 1.5rem 0.75rem 1.5rem;
   border-radius: 7px;
@@ -129,8 +130,6 @@ form button {
   color: #000;
   text-shadow: 0 0 2px #8f8f8f;
   background-color: #fff;
-  visibility: hidden;
-  transition: all ease-in-out 0.125s;
 }
 form button:hover {
   box-shadow: 0 0 9px inset;
@@ -143,28 +142,28 @@ form button:hover, form button:active {
   cursor: pointer;
 }
 
-button#replayBtn.visible {
-  animation: btnAppear 3.1s ease-in-out 0.5s 1 forwards;
-}
-
-button#openBtn.visible {
-  animation: btnAppear 3.2s ease-in-out 0.5s 1 forwards;
-}
-
-@keyframes elemShrink {
+@keyframes mainLengthen {
   0% {
-    transform: scale(1) translateX(0);
+    height: max-content;
+    max-height: max-content;
+  }
+  99% {
+    height: 60vh;
+    max-height: max-content;
   }
   100% {
-    transform: scale(0.49) translateX(-9.5rem);
+    height: max-content;
+    max-height: max-content;
   }
 }
-@keyframes shadowShrink {
+@keyframes contAppear {
   0% {
-    transform: scale(1);
+    visibility: visible;
+    opacity: 0;
   }
   100% {
-    transform: scale(0.51);
+    visibility: visible;
+    opacity: 1;
   }
 }
 @keyframes btnAppear {
@@ -175,6 +174,22 @@ button#openBtn.visible {
   100% {
     visibility: visible;
     opacity: 1;
+  }
+}
+@keyframes elemShrink {
+  0% {
+    transform: scale(1) translateX(0) translateY(0);
+  }
+  100% {
+    transform: scale(0.49) translateX(-9.5rem) translateY(-7rem);
+  }
+}
+@keyframes shadowShrink {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: scale(0.51) translateY(-17vh);
   }
 }
 @keyframes elemShake {
