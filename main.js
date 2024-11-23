@@ -55,20 +55,36 @@ $(document).ready(function() {
             //console.log("cont anim, openBtn display =/= none");
         //}
         ;
-        
+        $("#hdrBack").addClass("return");
+        $("#hdrFront").delay(1000).animate({
+            fontSize: "80vw",
+            marginTop: "0.7rem",
+            marginLeft: "-15rem"}, 3800, "swing"
+            // scale(1) tX(0) tY(0)
+    
+            //result
+            // scale(0.49) tX(-9.5rem) tY(-7rem)
+    
+            // font-size 259.55px = 42vw
+            // width = 618px
+        );
     });
     $('[type="button"]').each(function(i, el) {
         $(this).hide();
         // console.log("hide", $(this));
     });
+    // $("#hdrBack").
     $("#hdrFront").delay(1000).animate({
         fontSize: "42vw",
         marginTop: "0",
-        marginLeft: "-7rem"}, 3800, "swing"
+        marginLeft: "-20vw"}, 3800, "swing"
         // scale(1) tX(0) tY(0)
 
         //result
         // scale(0.49) tX(-9.5rem) tY(-7rem)
+
+        // font-size 259.55px = 42vw
+        // width = 618px
     );
 
     // $("#hdrBack").animate({
