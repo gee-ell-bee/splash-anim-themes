@@ -32,7 +32,7 @@ $text-col: #fff;
 
 // font sizes
 $header-h1-sz: 80vw; // 30rem
-$shad-h1-sz: 40.8vw;
+$shad-h1-sz: 42vw;
 $h1-sz: 2.5rem;
 $h1-marg: 0.7rem;
 $h1-pad: 0.5rem;
@@ -125,8 +125,18 @@ body {
     height: min-content;
 }
 
+#curtain {
+    z-index: 1000;
+    background-color: #fff;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 #whole {
-    border:3px dashed black;
+    // border:3px dashed black;
     // margin: auto;
     width: 100vw;
     overflow: hidden;
@@ -134,7 +144,7 @@ body {
 }
 
 #container {
-    border: 2px dashed black;
+    // border: 2px dashed black;
     margin: $whole-marg $body-marg-base-funct $whole-marg $body-marg-left;
     width: $main-width;
     height: max-content;
@@ -210,7 +220,7 @@ header {
 }
 
 .header-bg {
-    border: 2px solid red;
+    // border: 2px solid red;
     position: absolute;
     display: block;
     top: calc($whole-marg + $h1-marg + $h1-pad);

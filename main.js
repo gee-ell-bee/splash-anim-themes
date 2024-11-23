@@ -23,7 +23,8 @@ var openFctn = $("#contBtn").one("click", function() {
 
 // functions
 $(document).ready(function() {
-    console.log("document ready");
+    // console.log("document ready");
+    $("#curtain").fadeOut(500);
     
     // add fx to contBtn
     openFctn;
@@ -49,58 +50,47 @@ $(document).ready(function() {
                 });
             });
             // place contBtn fx back
-            openFctn;
+            $("#contBtn").one("click", function() {
+                // console.log("open f(x)");
+                // make .buttons height variable
+                $(".buttons").css({height: "max-content"});
+                // show content via roll-down
+                $("#content").animate({height: "20vh"}, "slow", function() {
+                    // removing the cont btn
+                    // first: fade out
+                    $("#contBtn").animate({
+                        opacity: "0"
+                    }, 500, function() {
+                        // second: roll-up
+                        $("#contBtn").animate({
+                            height: "0"
+                        }, 250, "swing", function() {
+                            // third: hide object
+                            $("#contBtn").toggle();
+                        });
+                    });
+                });
+            });
             // console.log($("#contBtn"));
-        } // else {
-            //console.log("cont anim, openBtn display =/= none");
-        //}
+        }
         ;
-        $("#hdrBack").addClass("return");
-        $("#hdrFront").delay(1000).animate({
-            fontSize: "80vw",
-            marginTop: "0.7rem",
-            marginLeft: "-15rem"}, 3800, "swing"
-            // scale(1) tX(0) tY(0)
-    
-            //result
-            // scale(0.49) tX(-9.5rem) tY(-7rem)
-    
-            // font-size 259.55px = 42vw
-            // width = 618px
-        );
     });
+    
     $('[type="button"]').each(function(i, el) {
         $(this).hide();
         // console.log("hide", $(this));
     });
-    // $("#hdrBack").
-    $("#hdrFront").delay(1000).animate({
+
+    $("#hdrFront").delay(1500).animate({
         fontSize: "42vw",
         marginTop: "0",
         marginLeft: "-20vw"}, 3800, "swing"
-        // scale(1) tX(0) tY(0)
-
-        //result
-        // scale(0.49) tX(-9.5rem) tY(-7rem)
-
-        // font-size 259.55px = 42vw
-        // width = 618px
     );
 
-    // $("#hdrBack").animate({
-    //     fontSize: "15.1rem",
-    // });
 
+    $("#replayBtn").delay(2000).fadeIn(500);
 
-    $("#replayBtn").delay(1500).fadeIn(500);
+    $("#contBtn").delay(2750).fadeIn(2000, "swing");
 
-    $("#contBtn").delay(2250).fadeIn(2000, "swing");
-
-    
-    
-    // $("#hdrBack").animate({
-    //     fontSize: "15.3rem"}, 2800, "swing");
-    // orig font size 30rem
-    // result scale(0.51) tY(-7rem)
     
 });

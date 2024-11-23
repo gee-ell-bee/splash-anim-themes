@@ -29,15 +29,23 @@ body {
   height: min-content;
 }
 
+#curtain {
+  z-index: 1000;
+  background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 #whole {
-  border: 3px dashed black;
   width: 100vw;
   overflow: hidden;
   height: max-content;
 }
 
 #container {
-  border: 2px dashed black;
   margin: 7vw 16.6666666667vw 7vw 33.3333333333vw;
   width: 50vw;
   height: max-content;
@@ -95,7 +103,6 @@ header h1 {
 }
 
 .header-bg {
-  border: 2px solid red;
   position: absolute;
   display: block;
   top: calc(7vw + 0.7rem + 0.5rem);
@@ -143,7 +150,7 @@ header h1 {
 }
 
 .header-bg.return::after {
-  font-size: 40.8vw;
+  font-size: 42vw;
   animation-name: fontEnlarge;
   animation-duration: 1.8s;
   animation-timing-function: ease-in;
