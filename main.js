@@ -1,6 +1,6 @@
 // functions
 $(document).ready(function() {
-    console.log("document ready");
+    // console.log("document ready");
     $("#curtain").fadeOut(500);
     
 
