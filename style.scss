@@ -122,6 +122,47 @@ main {
     box-shadow: 0 0px 30px $main-bg-col;
     overflow: hidden;
     transition: all .25s ease-in;
+
+    .buttons {
+        margin: 5vw 4vw 5vw 5vw;
+        height: max-content;
+    }
+
+}
+
+form {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: space-around;
+}
+
+form button {
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    padding: 0.5rem 1.5rem 0.75rem 1.5rem;
+    border-radius: 7px;
+    border: 0;
+    box-shadow: 0 0 7px inset;
+    font-family: "halyard-text", Arial, sans-serif;
+    text-transform: lowercase;
+    font-size: 1.5rem;
+    color: #000;
+    text-shadow: 0 0 2px #8f8f8f;
+    background-color: #fff;
+}
+
+form button:hover {
+    box-shadow: 0 0 9px inset;
+}
+form button:active {
+    box-shadow: 0 0 15px inset;
+    text-shadow: 0 0 1px #8f8f8f;
+}
+form button:hover, form button:active {
+    cursor: pointer;
 }
 
 div.bg {
@@ -130,6 +171,8 @@ div.bg {
     display: block;
     width: 100vw;
     height: 100vh;
+    pointer-events: none;
+
     // backdrop-filter: saturate(80%);
     // -webkit-backdrop-filter: saturate(80%);
     // filter:saturate(100%);
@@ -151,15 +194,19 @@ main div.bg.blue {
     z-index: 3;
     mix-blend-mode:soft-light;
     background-color: rgb(20, 80, 208);
+    pointer-events: none;
 }
 
 div.hdrCol {
+    pointer-events: none;
+
     h1 {
         position: absolute;
         // border: 2px solid yellow;
         top: 0;
         padding: $h1-pad 0;
         margin: 0 0 0 calc($header-val + 10vw);
+        pointer-events: none;
     }
 }
 

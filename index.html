@@ -10,8 +10,9 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://use.typekit.net/aqu1kve.css">
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js" defer></script>
+    <script src="/jquery-color/dist/jquery.color.min.js" defer></script>
 
-    <script src="main.js" defer></script>
+    <script src="main.js" type="module" defer></script>
 </head>
 <body>
     <div id="curtain"></div>
@@ -27,11 +28,19 @@
                 <header>
                     <h1 id="hdrFront">Grey</h1>
                 </header>
+
+                <section class="buttons">
+                    <form>
+                        <button id="blueB" type="button">Blue</button>
+                        <button id="contBtn" type="button">Mauve</button>
+                    </form>
+                </section>
             </main>
             <div class="header-bg">
                 <h1 id="hdrBack">Grey</h1>
             </div>
-        <div class="hdrCol red"><h1>Grey</h1></div>
+
+            <div class="hdrCol red"><h1>Grey</h1></div>
             
         </div>
     </div>
