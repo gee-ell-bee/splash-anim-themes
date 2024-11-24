@@ -2,24 +2,6 @@
 
 //rgb(20, 103, 176) pretty blue;
 
-// animation
-// $hdr-elem-delay: .7s;
-$hdr-shad-delay: 2s;
-// $hdr-elem-dur: 1.3s;
-$hdr-shad-dur: 1.8s;
-// $hdr-elem-fctn: ease-in-out;
-$hdr-shad-fctn: ease-in;
-
-// $hdr-anim-elem-snk: elemShrink;
-// $hdr-anim-elem-snk-time: $hdr-elem-dur $hdr-elem-fctn $hdr-elem-delay 1 forwards;
-$hdr-anim-shad-snk: shadowShrink;
-$hdr-anim-shad-snk-time: $hdr-shad-dur $hdr-shad-fctn $hdr-shad-delay 1;
-
-// $hdr-anim-elem-shk: elemShake 1s ease-out 2.8s 1 forwards;
-$hdr-anim-transf: translateY(0) translateX(0);
-$hdr-anim-transfd: translateY(-1vw) translateX(10vw);
-
-
 // fonts
 $sans-serif-disp: 'halyard-display', Arial, sans-serif;
 $sans-serif-text: 'halyard-text', Arial, sans-serif;
@@ -151,25 +133,23 @@ div.bg {
     // backdrop-filter: saturate(80%);
     // -webkit-backdrop-filter: saturate(80%);
     // filter:saturate(100%);
-    
-    transform: $hdr-anim-transf;
 }
 
 div.bg.red {
     z-index: 9;
     mix-blend-mode:soft-light;
-    background-color:rgb(193, 43, 43);
+    background-color:rgba(226, 135, 135, 0.851);
 }
 
 div.bg.pink {
     z-index: 0;
     mix-blend-mode:lighten;
-    background-color:rgb(20, 103, 176);
+    background-color:rgba(115, 165, 209, 0.349);
 }
 
 main div.bg.blue {
     z-index: 3;
-    mix-blend-mode:hard-light;
+    mix-blend-mode:soft-light;
     background-color: rgb(20, 80, 208);
 }
 
@@ -197,14 +177,12 @@ header {
     position: relative;
     width: max-content;
     height: max-content;
-    transform: $hdr-anim-transf;
 
     h1 {
         @include header-h1;
         margin: 0 0 0 $header-val;
         padding: $h1-pad 0;
         height: 100%;
-        transform: $hdr-anim-transf;
     }
 }
 
@@ -216,15 +194,13 @@ header {
     z-index: 0;
     margin: 0;
     width: calc($main-width + $header-ind);
-    transform: $hdr-anim-transf;
 
     h1 {
         @include header-h1($col: $main-bg-col);
-        padding: calc($h1-pad * 2) 0;
+        padding: $h1-pad 0;
         margin: 0 0 0 (-$body-marg-left);
         width: max-content;
         height: 100%;
-        transform: $hdr-anim-transf;
 
     }
 }

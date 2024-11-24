@@ -70,24 +70,23 @@ div.bg {
   display: block;
   width: 100vw;
   height: 100vh;
-  transform: translateY(0) translateX(0);
 }
 
 div.bg.red {
   z-index: 9;
   mix-blend-mode: soft-light;
-  background-color: rgb(193, 43, 43);
+  background-color: rgba(226, 135, 135, 0.851);
 }
 
 div.bg.pink {
   z-index: 0;
   mix-blend-mode: lighten;
-  background-color: rgb(20, 103, 176);
+  background-color: rgba(115, 165, 209, 0.349);
 }
 
 main div.bg.blue {
   z-index: 3;
-  mix-blend-mode: hard-light;
+  mix-blend-mode: soft-light;
   background-color: rgb(20, 80, 208);
 }
 
@@ -115,7 +114,6 @@ header {
   position: relative;
   width: max-content;
   height: max-content;
-  transform: translateY(0) translateX(0);
 }
 header h1 {
   line-height: 1;
@@ -128,7 +126,6 @@ header h1 {
   margin: 0 0 0 -30vw;
   padding: 0.5vw 0;
   height: 100%;
-  transform: translateY(0) translateX(0);
 }
 
 .header-bg {
@@ -138,7 +135,6 @@ header h1 {
   z-index: 0;
   margin: 0;
   width: 80vw;
-  transform: translateY(0) translateX(0);
 }
 .header-bg h1 {
   line-height: 1;
@@ -148,11 +144,10 @@ header h1 {
   font-size: 80vw;
   color: #000;
   font-weight: 600;
-  padding: 1vw 0;
+  padding: 0.5vw 0;
   margin: 0 0 0 -33.3333333333vw;
   width: max-content;
   height: 100%;
-  transform: translateY(0) translateX(0);
 }
 
 /*# sourceMappingURL=style.css.map */
