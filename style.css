@@ -46,6 +46,7 @@ body {
 }
 
 #container {
+  position: relative;
   margin: 7vw 16.6666666667vw 7vw 33.3333333333vw;
   width: 50vw;
   height: max-content;
@@ -53,7 +54,7 @@ body {
 
 main {
   position: relative;
-  z-index: 5;
+  z-index: 1;
   margin: 0;
   background-color: #000;
   height: max-content;
@@ -63,41 +64,69 @@ main {
   overflow: hidden;
   transition: all 0.25s ease-in;
 }
-main .buttons {
-  margin: 5vw 4vw 5vw 5vw;
-  height: calc((1.25rem + 35px) * 2 + 1.5rem);
-}
-main #content {
-  border-radius: 6px;
-  margin: 5vw 4vw 5vw 5vw;
-  padding: 0.5rem 1vw 0.5rem 0.5rem;
-  overflow-y: scroll;
-  max-height: max-content;
+
+div.bg {
+  position: absolute;
   display: block;
-  height: 0;
-  color: #fff;
+  width: 100vw;
+  height: 100vh;
+  transform: translateY(0) translateX(0);
 }
-main #content p {
-  margin: 0 0 1rem 0;
+
+div.bg.red {
+  z-index: 9;
+  mix-blend-mode: soft-light;
+  background-color: rgb(193, 43, 43);
+}
+
+div.bg.pink {
+  z-index: 0;
+  mix-blend-mode: lighten;
+  background-color: rgb(20, 103, 176);
+}
+
+main div.bg.blue {
+  z-index: 3;
+  mix-blend-mode: hard-light;
+  background-color: rgb(20, 80, 208);
+}
+
+div.hdrCol h1 {
+  position: absolute;
+  top: 0;
+  padding: 0.5vw 0;
+  margin: 0 0 0 -20vw;
+}
+
+div.hdrCol.red h1 {
+  line-height: 1;
+  font-family: "halyard-display", Arial, sans-serif;
+  font-style: italic;
+  text-shadow: 0 0 12px rgb(225, 17, 51);
+  font-size: 42vw;
+  color: rgb(225, 17, 51);
+  font-weight: 600;
+  mix-blend-mode: color-burn;
+  z-index: 2;
 }
 
 header {
+  margin-bottom: 20vw;
   position: relative;
-  z-index: 2;
   width: max-content;
   height: max-content;
   transform: translateY(0) translateX(0);
 }
 header h1 {
-  margin: 0.7rem 0 0.7rem -15rem;
   line-height: 1;
   font-family: "halyard-display", Arial, sans-serif;
   font-style: italic;
   text-shadow: 0 0 12px #fff;
-  padding: 0.5rem 0;
   font-size: 80vw;
   color: #fff;
   font-weight: 600;
+  margin: 0 0 0 -30vw;
+  padding: 0.5vw 0;
   height: 100%;
   transform: translateY(0) translateX(0);
 }
@@ -105,126 +134,25 @@ header h1 {
 .header-bg {
   position: absolute;
   display: block;
-  top: calc(7vw + 0.7rem + 0.5rem);
+  top: 0;
   z-index: 0;
-  margin: 0 0 0 -15rem;
-  width: calc(50vw + 15rem);
+  margin: 0;
+  width: 80vw;
   transform: translateY(0) translateX(0);
-  animation-name: shadowShrink;
-  animation-duration: 1.8s;
-  animation-timing-function: ease-in;
-  animation-iteration-count: 1;
-  animation-delay: 2s;
-  animation-direction: normal;
-  animation-fill-mode: forwards;
 }
-
-.header-bg.return {
-  transform: translateY(-1vw) translateX(10vw);
-  animation-name: shadowEnlarge;
-  animation-duration: 1.8s;
-  animation-timing-function: ease-in;
-  animation-iteration-count: 1;
-  animation-delay: 0;
-  animation-direction: normal;
-  animation-fill-mode: forwards;
-}
-
-.header-bg::after {
-  content: "Grey";
+.header-bg h1 {
   line-height: 1;
   font-family: "halyard-display", Arial, sans-serif;
   font-style: italic;
   text-shadow: 0 0 15px #000;
-  padding: 0.5rem 0;
   font-size: 80vw;
   color: #000;
   font-weight: 600;
-  animation-name: fontShrink;
-  animation-duration: 1.8s;
-  animation-timing-function: ease-in;
-  animation-iteration-count: 1;
-  animation-delay: 2s;
-  animation-direction: normal;
-  animation-fill-mode: forwards;
-}
-
-.header-bg.return::after {
-  font-size: 42vw;
-  animation-name: fontEnlarge;
-  animation-duration: 1.8s;
-  animation-timing-function: ease-in;
-  animation-iteration-count: 1;
-  animation-delay: 0;
-  animation-direction: normal;
-  animation-fill-mode: forwards;
-}
-
-form {
-  display: flex;
-  gap: 1.5rem;
-  flex-direction: column;
-  justify-content: space-around;
-}
-form button {
+  padding: 1vw 0;
+  margin: 0 0 0 -33.3333333333vw;
   width: max-content;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  align-items: center;
-  padding: 0.5rem 1.5rem 0.75rem 1.5rem;
-  border-radius: 7px;
-  border: 0;
-  box-shadow: 0 0 7px inset;
-  font-family: "halyard-text", Arial, sans-serif;
-  text-transform: lowercase;
-  font-size: 1.5rem;
-  color: #000;
-  text-shadow: 0 0 2px #8f8f8f;
-  background-color: #fff;
-}
-form button:hover {
-  box-shadow: 0 0 9px inset;
-}
-form button:active {
-  box-shadow: 0 0 15px inset;
-  text-shadow: 0 0 1px #8f8f8f;
-}
-form button:hover, form button:active {
-  cursor: pointer;
-}
-
-@keyframes fontShrink {
-  0% {
-    font-size: 80vw;
-  }
-  100% {
-    font-size: 40.8vw;
-  }
-}
-@keyframes fontEnlarge {
-  0% {
-    font-size: 40.8vw;
-  }
-  100% {
-    font-size: 80vw;
-  }
-}
-@keyframes shadowShrink {
-  0% {
-    transform: translateY(0) translateX(0);
-  }
-  100% {
-    transform: translateY(-1vw) translateX(10vw);
-  }
-}
-@keyframes shadowEnlarge {
-  0% {
-    transform: translateY(-1vw) translateX(10vw);
-  }
-  100% {
-    transform: translateY(0) translateX(0);
-  }
+  height: 100%;
+  transform: translateY(0) translateX(0);
 }
 
 /*# sourceMappingURL=style.css.map */

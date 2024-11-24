@@ -1,3 +1,19 @@
+@mixin anim($anim: $hdr-anim-shad-snk, $open: "true") {
+    animation-name: $anim;
+    animation-duration: $hdr-shad-dur;
+    animation-timing-function: $hdr-shad-fctn;
+    animation-iteration-count: 1;
+    @if ($open == "true") {
+        animation-delay: $hdr-shad-delay;
+    }
+    @if($open == "false") {
+        animation-delay: 0;
+    }
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    
+}
+
 @mixin anim($anim: $hdr-anim-shad-snk, $fwd: "true") {
     animation-duration: $hdr-shad-dur;
     animation-timing-function: $hdr-shad-fctn;

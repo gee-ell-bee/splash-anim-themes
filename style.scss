@@ -1,5 +1,7 @@
 @use "sass:math";
 
+//rgb(20, 103, 176) pretty blue;
+
 // animation
 // $hdr-elem-delay: .7s;
 $hdr-shad-delay: 2s;
@@ -34,28 +36,10 @@ $text-col: #fff;
 $header-h1-sz: 80vw; // 30rem
 $shad-h1-sz: 42vw;
 $h1-sz: 2.5rem;
-$h1-marg: 0.7rem;
-$h1-pad: 0.5rem;
-$h1-h-tot: calc($header-h1-sz + $h1-marg * 2);
-
-@mixin anim($anim: $hdr-anim-shad-snk, $open: "true") {
-    animation-name: $anim;
-    animation-duration: $hdr-shad-dur;
-    animation-timing-function: $hdr-shad-fctn;
-    animation-iteration-count: 1;
-    @if ($open == "true") {
-        animation-delay: $hdr-shad-delay;
-    }
-    @if($open == "false") {
-        animation-delay: 0;
-    }
-    animation-direction: normal;
-    animation-fill-mode: forwards;
-    
-}
+$h1-marg: 1vw;
+$h1-pad: 0.5vw;
 
 @mixin h1($color: $text-col, $size: $h1-sz) {
-    padding: $h1-pad 0;
     font-size: $size;
     color: $color;
     font-weight: 600;
@@ -85,13 +69,8 @@ $med-main-height: 50vh;
 $main-max-h: max-content;  // 85vh
 $med-main-max-h: 70vh;
 
-// content
-$cont-marg: 5vw;
-$cont-pad-r: 1vw;
-$cont-marg-r: calc($cont-marg - $cont-pad-r);
-
 // header
-$header-ind: 15rem;
+$header-ind: 30vw;
 $header-val: -$header-ind;
 
 *, *::before, *::after {
@@ -137,7 +116,6 @@ body {
 
 #whole {
     // border:3px dashed black;
-    // margin: auto;
     width: 100vw;
     overflow: hidden;
     height: max-content;
@@ -145,6 +123,7 @@ body {
 
 #container {
     // border: 2px dashed black;
+    position: relative;
     margin: $whole-marg $body-marg-base-funct $whole-marg $body-marg-left;
     width: $main-width;
     height: max-content;
@@ -152,7 +131,7 @@ body {
 
 main {
     position: relative;
-    z-index: 5;
+    z-index: 1;
     margin: 0;
     background-color: $main-bg-col;
     height: $main-height;
@@ -161,280 +140,91 @@ main {
     box-shadow: 0 0px 30px $main-bg-col;
     overflow: hidden;
     transition: all .25s ease-in;
+}
 
-    .buttons {
-        // border: 1px solid white;
-        margin: $cont-marg $cont-marg-r $cont-marg $cont-marg;
-        height: calc((1.25rem + 35px) * 2 + 1.5rem);
-        // 0.5rem + 0.75rem + 20px + 1.5rem = 2.75rem + 20px
-        // padding: 0.5rem 1.5rem .75rem 1.5rem;
-        // font-size: 20px;
-        // gap: 1.5rem;
-
-    }
+div.bg {
+    // border: 2px solid red;
+    position: absolute;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    // backdrop-filter: saturate(80%);
+    // -webkit-backdrop-filter: saturate(80%);
+    // filter:saturate(100%);
     
-    #content {
-        // display: none;
-        // position: relative;
-        // visibility: hidden;
-        // opacity: 0;
-        // border: 1px solid white;
-        border-radius: 6px;
-        margin: $cont-marg $cont-marg-r $cont-marg $cont-marg;
-        padding: 0.5rem $cont-pad-r 0.5rem 0.5rem;
-        overflow-y: scroll;
-        max-height: max-content;
-        display: block;
-        height: 0;
-        // height: calc($main-height - $h1-h-tot - $cont-marg * 2);
-        // background-color: $text-col;
-        color: $text-col;
-        // transition: all .25s ease-in;
+    transform: $hdr-anim-transf;
+}
 
-        p {
-            margin: 0 0 1rem 0;
-        }
+div.bg.red {
+    z-index: 9;
+    mix-blend-mode:soft-light;
+    background-color:rgb(193, 43, 43);
+}
+
+div.bg.pink {
+    z-index: 0;
+    mix-blend-mode:lighten;
+    background-color:rgb(20, 103, 176);
+}
+
+main div.bg.blue {
+    z-index: 3;
+    mix-blend-mode:hard-light;
+    background-color: rgb(20, 80, 208);
+}
+
+div.hdrCol {
+    h1 {
+        position: absolute;
+        // border: 2px solid yellow;
+        top: 0;
+        padding: $h1-pad 0;
+        margin: 0 0 0 calc($header-val + 10vw);
     }
+}
 
-    // #content.visible {
-        // display: block;
-        // animation: .5s ease-in .75s 1 forwards contAppear;
-        // visibility: visible;
-    // }
+div.hdrCol.red {
+    h1 {
+        @include header-h1($col: rgb(225, 17, 51), $sz: 42vw);
+        mix-blend-mode:color-burn;
+        z-index: 2;
+    }
 }
 
 header {
+    // border: 3px solid red;
+    margin-bottom: 20vw;
     position: relative;
-    z-index: 2;
     width: max-content;
     height: max-content;
-    // border: 1px solid white;
     transform: $hdr-anim-transf;
+
     h1 {
-        margin: $h1-marg 0 $h1-marg $header-val;
         @include header-h1;
+        margin: 0 0 0 $header-val;
+        padding: $h1-pad 0;
         height: 100%;
         transform: $hdr-anim-transf;
-        // animation: $hdr-anim-elem-snk-time $hdr-anim-elem-snk;
     }
 }
 
 .header-bg {
-    // border: 2px solid red;
+    // border: 2px solid green;
     position: absolute;
     display: block;
-    top: calc($whole-marg + $h1-marg + $h1-pad);
+    top: 0;
     z-index: 0;
-    margin: 0 0 0 $header-val;
+    margin: 0;
     width: calc($main-width + $header-ind);
     transform: $hdr-anim-transf;
-    @include anim;
-    // animation: $hdr-anim-shad-snk-time normal both $hdr-anim-shad-snk;
-}
 
-.header-bg.return {
-    transform: $hdr-anim-transfd;
-    @include anim($anim: shadowEnlarge, $open: "false");
-    // animation: $hdr-anim-shad-snk-time reverse both $hdr-anim-shad-snk;
-}
-
-.header-bg::after {
-    content: "Grey";
-    @include header-h1($col: $main-bg-col);
-    @include anim($anim: fontShrink);
-    // animation: $hdr-anim-shad-snk-time normal both fontShrink;
-}
-
-.header-bg.return::after {
-    font-size: $shad-h1-sz;
-    @include anim($anim: fontEnlarge, $open: "false");
-    // animation: $hdr-anim-shad-snk-time reverse both fontShrink;
-}
-
-form {
-    display: flex;
-    gap: 1.5rem;
-    flex-direction: column;
-    justify-content: space-around;
-
-    button {
+    h1 {
+        @include header-h1($col: $main-bg-col);
+        padding: calc($h1-pad * 2) 0;
+        margin: 0 0 0 (-$body-marg-left);
         width: max-content;
-        display: flex;
-        justify-content: center;
-        position: relative;
-        align-items: center;
-        padding: 0.5rem 1.5rem .75rem 1.5rem;
-        border-radius: 7px;
-        border: 0;
-        box-shadow: 0 0 7px inset;
-    
-        font-family: $sans-serif-text;
-        text-transform: lowercase;
-        font-size: 1.5rem;
-        color: $main-bg-col;
-        text-shadow: 0 0 2px #8f8f8f;
-        background-color: $text-col;
-    
-        
-        // visibility: hidden;
-        // opacity: 0;
-        // transition: all ease-in-out .125s;
-    
-        &:hover {
-            box-shadow: 0 0 9px inset;
-        }
-    
-        &:active {
-            box-shadow: 0 0 15px inset;
-            text-shadow: 0 0 1px #8f8f8f;
-        }
-    
-        &:hover, &:active {
-            cursor: pointer;
-        }
-    }
-}
-
-@keyframes fontShrink {
-    0% {
-        font-size: $header-h1-sz;
-    }
-
-    100% {
-        font-size: 40.8vw;
-    }
-}
-
-@keyframes fontEnlarge {
-    0% {
-        font-size: 40.8vw;
-    }
-
-    100% {
-        font-size: $header-h1-sz;
-    }
-}
-
-// @keyframes mainLengthen {
-//     0% {
-//         height: $main-height;
-//         max-height: max-content;
-//     }
-
-//     99% {
-//         height: 60vh;
-//         max-height: max-content;
-//     }
-
-//     100% {
-//         height:max-content;
-//         max-height: max-content;
-//     }
-// }
-
-// @keyframes contAppear {
-//     0% {
-//         visibility: visible;
-//         opacity: 0;
-//     }
-
-//     100% {
-//         visibility: visible;
-//         opacity: 1;
-//     }
-// }
-
-// @keyframes btnAppear {
-//     0% {
-//         visibility: visible;
-//         opacity: 0;
-//     }
-
-//     100% {
-//         visibility: visible;
-//         opacity: 1;
-//     }
-// }
-
-
-// @keyframes elemShrink {
-//     0% {
-//         transform: scale(1) translateX(0) translateY(0);
-//     }
-
-//     100% {
-//         transform: scale(0.49) translateX(-9.5rem) translateY(-7rem);
-//     }
-// }
-
-@keyframes shadowShrink {
-    0% {
+        height: 100%;
         transform: $hdr-anim-transf;
-    }
 
-    100% {
-        // font-size: 252.45
-        transform: $hdr-anim-transfd;
     }
 }
-
-@keyframes shadowEnlarge {
-    0% {
-        // font-size: 252.45
-        transform: $hdr-anim-transfd;
-    }
-
-    100% {
-        transform: $hdr-anim-transf;
-    }
-}
-
-// @keyframes elemShake {
-//     0% {
-//         transform: scale(.49) translateX(-9.5rem);
-//     }
-
-//     //hit
-//     10% {
-//         transform: scale(.49) translateX(-9.85rem) translateY(-.5rem);
-//     }
-
-//     //return
-//     25% {
-//         transform: scale(.49) translateX(-9.5rem) translateY(-.1rem);
-//     }
-
-//     //hit
-//     45% {
-//         transform: scale(.49) translateX(-9.1rem) translateY(-.7rem);
-//     }
-
-//     //return
-//     65% {
-//         transform: scale(.49) translateX(-9.3rem) translateY(-.3rem);
-//     }
-
-//     //hit
-//     80% {
-//         transform: scale(.49) translateX(-8.75rem) translateY(-.2rem);
-//     }
-
-//     //return
-//     95% {
-//         transform: scale(.49) translateX(-9.4rem) translateY(0rem);
-//     }
-
-
-// }
-
-// @keyframes elemAttack {
-//     0% {
-//         transform: scale(.49) translateX(-9.5rem);
-//     }
-
-//     15% {
-//         transform: scale(.51) translateX(-8.5rem) translateY(.5rem);
-//     }
-    
-// }
-
