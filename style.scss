@@ -45,7 +45,7 @@ $whole-marg: 7vw;
 // main
 $main-width: 50vw;
 $body-marg-base-funct: calc((100vw - $main-width)/3); // aka body-marg-right
-$body-marg-left: calc($body-marg-base-funct * 2);
+$body-marg-left: calc($body-marg-base-funct * 1.75);
 $main-height: max-content; // 80vh
 $med-main-height: 50vh;
 $main-max-h: max-content;  // 85vh
