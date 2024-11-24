@@ -99,7 +99,7 @@ div.hdrCol h1 {
 
 div.hdrCol.red h1 {
   line-height: 1;
-  font-family: "halyard-display", Arial, sans-serif;
+  font-family: "halyard-display", Helvetica, Arial, sans-serif;
   font-style: italic;
   text-shadow: 0 0 12px rgb(225, 17, 51);
   font-size: 42vw;
@@ -117,7 +117,7 @@ header {
 }
 header h1 {
   line-height: 1;
-  font-family: "halyard-display", Arial, sans-serif;
+  font-family: "halyard-display", Helvetica, Arial, sans-serif;
   font-style: italic;
   text-shadow: 0 0 12px #fff;
   font-size: 80vw;
@@ -138,7 +138,7 @@ header h1 {
 }
 .header-bg h1 {
   line-height: 1;
-  font-family: "halyard-display", Arial, sans-serif;
+  font-family: "halyard-display", Helvetica, Arial, sans-serif;
   font-style: italic;
   text-shadow: 0 0 15px #000;
   font-size: 80vw;
