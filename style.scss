@@ -96,6 +96,16 @@ body {
     left: 0;
 }
 
+#bg {
+    background-image: url("/imgs/flowerbg1.png");
+    background-color: #fff;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 #whole {
     // border:3px dashed black;
     width: 100vw;
@@ -133,7 +143,10 @@ main {
 form {
     display: flex;
     gap: 1.5rem;
-    justify-content: space-around;
+    // border: 1px solid white;
+    // margin: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 form button {
@@ -152,6 +165,11 @@ form button {
     color: #000;
     text-shadow: 0 0 2px #8f8f8f;
     background-color: #fff;
+    transition: all .25s ease-in;
+}
+
+form button.current {
+    font-style: italic;
 }
 
 form button:hover {
@@ -163,6 +181,38 @@ form button:active {
 }
 form button:hover, form button:active {
     cursor: pointer;
+}
+
+form button#replay {
+    color: #fff;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0.5rem 0 0 1rem;
+    margin-bottom: 1rem;
+    text-decoration: underline;
+    flex-basis: 100%;
+    text-align: left;
+    justify-content: flex-start;
+}
+
+form button#replay:hover {
+    text-shadow:0 0 15px #fff;
+}
+
+form button#replay:active {
+    text-decoration: none;
+}
+
+#blue {
+    color: rgb(0, 67, 175);
+}
+
+#mauve {
+    color: rgb(133, 67, 67);
+}
+
+#orig {
+    color: rgb(131, 81, 0);
 }
 
 div.bg {
@@ -181,19 +231,19 @@ div.bg {
 div.bg.red {
     z-index: 9;
     mix-blend-mode:soft-light;
-    background-color:rgba(226, 135, 135, 0.851);
+    // background-color:rgba(226, 135, 135, 0.851);
 }
 
 div.bg.pink {
     z-index: 0;
     mix-blend-mode:lighten;
-    background-color:rgba(115, 165, 209, 0.349);
+    // background-color:rgba(115, 165, 209, 0.349);
 }
 
 main div.bg.blue {
     z-index: 3;
     mix-blend-mode:soft-light;
-    background-color: rgb(20, 80, 208);
+    // background-color: rgb(20, 80, 208);
     pointer-events: none;
 }
 
@@ -212,7 +262,7 @@ div.hdrCol {
 
 div.hdrCol.red {
     h1 {
-        @include header-h1($col: rgb(225, 17, 51), $sz: 42vw);
+        @include header-h1($col: rgb(221, 78, 102), $sz: 42vw);
         mix-blend-mode:color-burn;
         z-index: 2;
     }

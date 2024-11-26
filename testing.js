@@ -49,37 +49,68 @@ if (callback !== false && t !== false) {
 };
 };
 
+// orig iteration for #BLUE
+$(".bg.red").animate({
+    backgroundColor: jQuery.Color("rgba(226, 135, 135, 0.851)")
+}, "slow");
+$(".bg.pink").animate({
+    backgroundColor: jQuery.Color("rgba(115, 165, 209, 0.349)")
+}, "slow");
+$(".bg.blue").css({
+    mixBlendMode: "soft-light"}).animate({
+    backgroundColor: jQuery.Color("rgb(20, 80, 208)")
+}, "slow");
 
-// put hdr back
-$("#hdrBack").addClass("return");
-$("#hdrFront").delay(1000).animate({
-    fontSize: "80vw",
-    marginTop: "0.7rem",
-    marginLeft: "-15rem"}, 3800, "swing"
-    // scale(1) tX(0) tY(0)
+// orig if then for #MAUVE
 
-    //result
-    // scale(0.49) tX(-9.5rem) tY(-7rem)
-
-    // font-size 259.55px = 42vw
-    // width = 618px
-);
-
-//==============================
-$(".buttons").css({height: "calc((1.25rem + 35px) * 2 + 1.5rem)"});
-$("#contBtn").one("click", function() {
-    // console.log("open f(x)");
-    $(".buttons").css({height: "max-content"});
-    // $("main").css({height: "max-content", maxHeight: "max-content"});
-    $("#content").animate({height: "20vh"}, "slow", function() {
-        $("#contBtn").animate({
-            opacity: "0"
-        }, 500, function() {
-            $("#contBtn").animate({
-                height: "0"
-            }, 250, "swing", function() {
-                $("#contBtn").toggle();
-            });
-        });
+$("#mauve").on("click", function() {
+    // console.log("clicked!");
+    $(".bg").each(function () {
+        if($(this).hasClass("red")) {
+            $(this).animate({
+                backgroundColor: jQuery.Color("rgba(226, 135, 135, 0.851)")
+            }, "slow");
+            return false;
+        } else if($(this).hasClass("pink")) {
+            $(this).animate({
+                backgroundColor: jQuery.Color("rgba(115, 165, 209, 0.349)")
+            }, "slow");
+            return false;
+        } else if($(this).hasClass("blue")) {
+            $(this).css({
+            mixBlendMode: "soft-light"})
+            .animate({
+            backgroundColor: jQuery.Color("rgb(20, 80, 208)")
+            }, "slow");
+        };
     });
+    $(".hdrCol.red h1").animate({
+        color: jQuery.Color("rgb(225, 17, 51)")
+    }, "slow");
+
+    switchCurrent($(this));
 });
+
+
+    // ifDivBlue function, fully typed
+    // const ret = return false;
+    const animDivBlue = itemAnim(item, color);
+    if(item.hasClass("blue") && btn.attr("id") == "blue") { 
+        console.log("if button was #blue");
+        item.css({
+            mixBlendMode: "hard-light"}); // then use hard light
+            
+            itemAnim(item, color);
+            return false;
+    } else if(item.hasClass("blue") && btn.attr("id") == "mauve") { // ..AND button clicked was #mauve
+        console.log("if button was #mauve");
+        item.css({
+            mixBlendMode: "soft-light"}); // then use soft light
+            
+        itemAnim(item, color);
+        return false;
+    } else if(item.hasClass("blue")) {
+        console.log("item is just blue");
+        itemAnim(item, color);
+        return false;
+    };
