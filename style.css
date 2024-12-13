@@ -8,6 +8,7 @@
 
 html, body {
   height: 100%;
+  font-size: 16px;
 }
 
 p, h1, h2, h3, h4, h5, h6 {
@@ -22,7 +23,6 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   margin: 0;
-  font-size: 20px;
   font-family: "halyard-text", Arial, sans-serif;
   font-weight: 300;
   color: #fff;
@@ -57,8 +57,8 @@ body {
 
 #container {
   position: relative;
-  margin: 7vw 16.6666666667vw 7vw 29.1666666667vw;
-  width: 50vw;
+  margin: 7vw 10vw 7vw 25vw;
+  width: auto;
   height: max-content;
 }
 
@@ -202,7 +202,7 @@ div.hdrCol.red h1 {
 }
 
 header {
-  margin-bottom: 20vw;
+  margin-bottom: 10vw;
   position: relative;
   width: max-content;
   height: max-content;
@@ -226,7 +226,7 @@ header h1 {
   top: 0;
   z-index: 0;
   margin: 0;
-  width: 80vw;
+  width: calc(auto + 30vw);
 }
 .header-bg h1 {
   line-height: 1;
@@ -237,9 +237,22 @@ header h1 {
   color: #000;
   font-weight: 600;
   padding: 0.5vw 0;
-  margin: 0 0 0 -29.1666666667vw;
+  margin: 0 0 0 -25vw;
   width: max-content;
   height: 100%;
+}
+
+@media screen and (min-height: 700px) {
+  html, body {
+    font-size: 20px;
+  }
+  #container {
+    margin: 7vw 16.6666666667vw 7vw 25vw;
+    width: 50vw;
+  }
+  header {
+    margin-bottom: 20vw;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

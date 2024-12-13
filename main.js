@@ -72,7 +72,7 @@ $("#replay").on("click", function() {
     );
 });
 
-
+// change button visuals
 function switchCurrent(el) {
     $('[type="button"]').each(function () {
         if($(this).hasClass("current") == true && $(this) !== $(el)) {
@@ -107,6 +107,7 @@ function itemAnim(item, color) {
     }, "slow");
 }
 
+// switching from or to the blue theme
 function ifDivBlue(btn, item, color) {
     // console.log("div blue f(x)", item, color);
     if(item.hasClass("blue")) { 
@@ -121,6 +122,8 @@ function ifDivBlue(btn, item, color) {
             $("#bg").fadeIn("slow");
             item.css({
                 mixBlendMode: "soft-light"}); // then use soft light
+        } else if(btn.attr("id") == "orig") {
+            $("#bg").fadeIn("slow");
         };
         itemAnim(item, color);
         return false;
